@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .scroll-snap-y {
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      @apply bg-gray-200;
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply bg-theme rounded-md;
+    }
+  }
+}

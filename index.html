@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        width: 300px;
+        height: 100%;
+        background-color: darkgray;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box" id="box"></div>
+  </body>
+</html>
+<script>
+  /**
+   * 调整左侧div宽度
+   * 接收需要调整的dom对象
+   * */
+  function boxResize(dom) {
+    var div = document.createElement("div");
+    let divSty = div.style;
+    divSty.width = "5px";
+    divSty.height = "100%";
+    divSty.position = "absolute";
+    divSty.top = "0";
+    divSty.right = "0";
+    divSty.cursor = "e-resize";
+    dom.appendChild(div);
+    dom.style.position = "relative";
+    //鼠标按下事件
+    div.onmousedown = (e) => {
+      let w = dom.offsetWidth; //获取 div 元素的宽度，包含内边距（padding）和边框（border）
+      let startX = e.clientX; //鼠标指针的水平坐标
+      // 鼠标拖动事件
+      document.onmousemove = function (e) {
+        let change = e.clientX - startX; //鼠标移动的偏移值
+        let moveLen = w + change; //鼠标移动后，分割线节点元素的左边界的偏移值
+        if(moveLen >= 100) {
+            dom.style.width = moveLen + "px";
+        }
+      };
+      // 鼠标松开事件
+      document.onmouseup = function (evt) {
+        evt.stopPropagation();
+        document.onmousemove = null;
+        document.onmouseup = null;
+        //当你不在需要继续获得鼠标消息就要应该调用ReleaseCapture()释放掉
+        div.releaseCapture && div.releaseCapture();
+      };
+      div.setCapture && div.setCapture();
+    };
+  }
+  window.onload = () => {
+    //获取要调整元素的dom
+    let box = document.getElementById("box");
+    //调用方法,传入dom对象
+    boxResize(box);
+  };
+</script>

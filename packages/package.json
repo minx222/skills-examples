@@ -1,0 +1,24 @@
+{
+	"name": "packages",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/qs": "^6.9.15",
+		"autoprefixer": "^10.4.19",
+		"postcss": "^8.4.40",
+		"postcss-loader": "^8.1.1",
+		"tailwindcss": "^3.4.7",
+		"unplugin-auto-import": "^0.18.2"
+	},
+	"dependencies": {
+		"axios": "^1.7.2",
+		"qs": "^6.12.3"
+	}
+}
