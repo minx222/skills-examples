@@ -5,6 +5,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import AutoImport from "unplugin-auto-import/vite";
 import { defineConfig } from "vite";
 import viteCompression from "vite-plugin-compression";
+import { viteMockServe } from 'vite-plugin-mock';
 
 export default defineConfig({
 	plugins: [
@@ -22,6 +23,12 @@ export default defineConfig({
 			algorithm: "gzip", //压缩算法
 			ext: ".gz", //文件类型
 		}),
+		viteMockServe({
+			logger: true,
+			mockPath: './mocks/',
+			watchFiles: true,
+			enable: true,
+		})
 	],
 	resolve: {
 		alias: {

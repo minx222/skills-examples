@@ -2,8 +2,9 @@
 import { useSession } from './hooks'
 const { currentSession } = useSession();
 
-provide
-inject
+watch(currentSession.value, (newValue) => {
+	console.log('currentSession right', newValue)
+})
 </script>
 
 <template>

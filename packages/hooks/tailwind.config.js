@@ -1,6 +1,5 @@
 module.exports = {
 	purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-	content: [],
 	theme: {
 		screens: {
 			"2xl": { min: "1535px" },

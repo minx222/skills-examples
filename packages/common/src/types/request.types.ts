@@ -1,4 +1,4 @@
-import type { RequestMethodEnum } from "@/enums";
+import type { RequestMethodEnum } from "../enums";
 
 interface Result {
 	code: number;

@@ -7,8 +7,8 @@ import type {
 } from "axios";
 import qs from "qs";
 
-import { RequestMethodEnum, ResultEnum } from "@/enums/request";
-import type { CreateAxiosOptions } from "@/types";
+import { RequestMethodEnum, ResultEnum } from "../enums/request";
+import type { CreateAxiosOptions } from "../types";
 
 import type { ResultData } from "../types";
 
@@ -59,6 +59,6 @@ export class AxiosService {
 			url: url,
 			method: RequestMethodEnum.POST,
 			data,
-		});
+		}) as Promise<ResultData<T>>;
 	}
 }
