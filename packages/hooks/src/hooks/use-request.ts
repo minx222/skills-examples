@@ -18,7 +18,6 @@ export const useRequest = <P, T>(fn: ((params: P) => Promise<T>), config?: {
 		if (err) {
 			error.value = err;
 		} else {
-			console.log(res, 'res');
 			data.value = res;
 		}
 		loading.value = false;
