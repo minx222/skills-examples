@@ -11,6 +11,7 @@ const router = createBrowserRouter([
 			{ index: true, element: <LazyComponent component="home" /> },
 			{ path: 'about', element: <LazyComponent component="about" /> },
 			{ path: 'context', element: <LazyComponent component='context' /> },
+			{ path: 'news', element: <LazyComponent component='news' /> },
 		]
 	}
 ])

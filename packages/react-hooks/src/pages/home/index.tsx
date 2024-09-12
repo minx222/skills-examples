@@ -12,6 +12,7 @@ const Home = () => {
 			<div className="flex gap-4">
 				<Button onClick={() => navigate("/about")}>about页面</Button>
 				<Button onClick={() => navigate('/context')}>context页面</Button>
+				<Button onClick={() => navigate('/news')}>news页面</Button>
 			</div>
 		</div>
 	);

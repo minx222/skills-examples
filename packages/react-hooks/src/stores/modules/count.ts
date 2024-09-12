@@ -36,7 +36,7 @@ export const counterSlice = createAppSlice({
         fulfilled: (state, action) => {
           state.count += action.payload
         },
-        rejected: state => {
+        rejected: () => {
           console.log('failed')
         },
       },

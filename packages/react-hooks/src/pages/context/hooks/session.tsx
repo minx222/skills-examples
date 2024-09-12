@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { Dispatch, ReactNode, SetStateAction } from 'react'
+import type { Dispatch, FC, PropsWithChildren, SetStateAction } from 'react'
 
 import type { Session } from '../types';
 
@@ -11,21 +11,31 @@ const SessionContext = createContext<{
 	setCurrentSession: () => void 0
 });
 
-SessionContext.Provider
-
-export const useSessionContext = () => {
+export const sessionContextProvider = () => {
 	const [currentSession, setCurrentSession] = useState<Partial<Session>>({});
 
+	const Provider: FC<PropsWithChildren> = ({children}) => (
+		<SessionContext.Provider value={{
+			currentSession,
+			setCurrentSession
+		}}>
+			{children}
+		</SessionContext.Provider>
+	)
+
+	// const ctx = useContext()
+
 	return {
-		Provider: (children: ReactNode) => (
-			<SessionContext.Provider value={{
-				currentSession,
-				setCurrentSession
-			}}>
-				{children}
-			</SessionContext.Provider>
-		),
+		Provider,
 		currentSession,
 		setCurrentSession
+	}
+}
+
+export const useSessionContext = () => {
+	const ctx = useContext(SessionContext);
+
+	return {
+		...ctx
 	}
 }

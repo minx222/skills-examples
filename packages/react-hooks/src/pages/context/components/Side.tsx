@@ -4,7 +4,11 @@ import cls from 'classnames'
 
 import { findSessionByName } from '@/api'
 
+import { useSessionContext } from '../hooks';
+
 const Side = () => {
+
+	const { currentSession, setCurrentSession } = useSessionContext();
 	const { data } = useRequest(() => findSessionByName())
 
 	const list = useMemo(() => {
@@ -16,14 +20,20 @@ const Side = () => {
 			{
 				list.map((session) => {
 					return (
-						<div 
+						<button 
 							key={session.id}
 							className={cls(
-								'flex justify-center items-center p-2 border border-solid border-yellow-200 cursor-pointer hover:text-yellow-400',
+									'flex justify-center items-center p-2 border border-solid border-yellow-200 cursor-pointer hover:text-yellow-400',
+									{
+										'text-white bg-yellow-600': currentSession.id === session.id
+									}
 								)
 							}
+							type='button'
+							onClick={() => setCurrentSession(session)}
 						>
-					</div>
+							{session.topic}
+					</button>
 					)
 				})
 			}

@@ -28,4 +28,16 @@ export default defineConfig({
       scss: {}
     }
   },
+	server: {
+		host: true,
+		port: 4000,
+		open: false,
+		proxy: {
+			"dev-api": {
+				target: "localhost:4000",
+				changeOrigin: true,
+				rewrite: (path) => path.replace(/^\/dev-api/, ""),
+			},
+		},
+	},
 })

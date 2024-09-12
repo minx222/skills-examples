@@ -1,0 +1,33 @@
+{
+  "name": "@packages/components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "node ./server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.25.2",
+    "@babel/preset-react": "^7.24.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.7",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rollup": "^4.21.3",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "rollup-plugin-external-globals": "^0.12.0",
+    "rollup-plugin-gzip": "^4.0.1",
+    "rollup-plugin-postcss": "^4.0.2"
+  }
+}
