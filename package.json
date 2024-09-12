@@ -27,5 +27,8 @@
 		"commitizen": {
 			"path": "node_modules/cz-git"
 		}
-	}
+	},
+	"resolutions": {
+    "esbuild": "npm:esbuild@latest"
+  }
 }
