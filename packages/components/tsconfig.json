@@ -14,16 +14,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+		"declaration": true,
+		"declarationDir": "dist/types",
     "jsx": "react",
-    "paths": {
-      "@/*": ["./*"],
-      "@/": ["./packages"],
-      "@@/*": [".dumi/tmp/*"]
-    },
+		"paths": {
+			"@/*": ["./src/*"],
+			"tslib" : ["./node_modules/tslib/tslib.d.ts"]
+		},
     "experimentalDecorators": true
   },
   "include": [
-    "./index.tsx"
+    "./index.tsx",
+		"src/**/*"
   ],
   "exclude": ["node_modules", "lib"]
 }

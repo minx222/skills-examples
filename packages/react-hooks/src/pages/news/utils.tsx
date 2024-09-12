@@ -1,4 +1,5 @@
-import React, { type Component, Suspense } from "react"
+import React, { type ComponentType, Suspense } from "react"
+import classnames from 'classnames';
 
 const fetchComponent = async (name: string) => {
   const text = await fetch(
@@ -10,12 +11,13 @@ const fetchComponent = async (name: string) => {
     return a.text()
   })
   const module = getParsedModule(text)
-  return { default: module.exports } as unknown as Component
+  return { default: module.exports as ComponentType }  
 }
 
 
 const packages = {
   react: React,
+	classnames,
 }
 
 const getParsedModule = (code: string) => {
@@ -38,6 +40,10 @@ const DynamicComponent = (props: {
   const Component = useMemo(() => {
     return React.lazy(async () => fetchComponent(url))
   }, [name])
+
+	useEffect(() => {
+		
+	}, [])
 
   return (
     <Suspense
