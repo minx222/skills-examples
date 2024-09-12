@@ -1,41 +1,41 @@
-const resolve = require("@rollup/plugin-node-resolve");
-const postcss = require("rollup-plugin-postcss");
-const typescript = require("@rollup/plugin-typescript");
-const commonjs = require("@rollup/plugin-commonjs");
-const { babel } = require("@rollup/plugin-babel");
-const gzipPlugin = require('rollup-plugin-gzip');
+import typescript from 'rollup-plugin-typescript2';
+import clear from 'rollup-plugin-clear';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import { uglify } from 'rollup-plugin-uglify';
 
-/**@type {import('rollup').RollupOptions} */
-module.exports = {
-	input: "./src/news/index.tsx",
-	output: {
-		dir: "./dist",
-		format: 'esm',
-		sourcemap: true,
-	},
-	plugins: [
-		resolve(),
-		commonjs(),
-		postcss(),
-		typescript(),
-		gzipPlugin.default(),
-		babel({
-			presets: [
-				[
-					"@babel/preset-react",
-					{
-						"pragma": "dom", // default pragma is React.createElement (only in classic runtime)
-						"pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
-						"throwIfNamespace": false, // defaults to true
-						"runtime": "classic", // defaults to classic
-						"development": true,
-					}
-				]
-			],
-			plugins: [
-        // 添加这个插件来确保 JSX 正确处理
-        "@babel/plugin-transform-react-jsx",
-      ],
-		}),
-	],
+export default {
+  input: ['./index.tsx'],
+  output: [
+    {
+      file: 'dist/index.js',
+      format: 'cjs',
+      name: 'index.js',
+    },
+  ],
+  plugins: [
+    typescript(), // 会自动读取 文件tsconfig.json配置
+    clear({
+      targets: ['web-react'],
+    }),
+    resolve(),
+    commonjs({
+      ignoreGlobal: true,
+      include: /\/node_modules\//,
+      external: ['react', 'react-dom', 'styled-components'],
+      namedExports: {
+        react: Object.keys(require('react')),
+        'react-is': Object.keys(require('react-is')),
+      },
+    }),
+    babel({
+      exclude: 'node_modules/**',
+      runtimeHelpers: true,
+    }),
+    terser(),
+    uglify(),
+  ],
+  external: ['react', 'react-dom'],
 };
