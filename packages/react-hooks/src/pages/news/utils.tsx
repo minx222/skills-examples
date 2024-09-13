@@ -33,17 +33,13 @@ const getParsedModule = (code: string) => {
 
 
 
-const DynamicComponent = (props: {
+const DynamicComponent = <T,>(props: {
 	url: string;
- }) => {
+ } & T) => {
 	const { url, ...attrs } = props
   const Component = useMemo(() => {
     return React.lazy(async () => fetchComponent(url))
-  }, [name])
-
-	useEffect(() => {
-		
-	}, [])
+  }, [url])
 
   return (
     <Suspense
@@ -57,4 +53,4 @@ const DynamicComponent = (props: {
   )
 }
 
-export default React.memo(DynamicComponent)
+export default DynamicComponent

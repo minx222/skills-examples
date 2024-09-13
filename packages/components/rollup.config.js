@@ -26,7 +26,7 @@ export default components.map((component) => {
 		plugins: [
 			typescript(), // 会自动读取 文件tsconfig.json配置
 			clear({
-				targets: ['web-react'],
+				targets: ['dist'],
 			}),
 			resolve(),
 			commonjs({

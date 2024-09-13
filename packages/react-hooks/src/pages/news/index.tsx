@@ -1,4 +1,7 @@
 import { Suspense } from "react";
+
+import type { NewsProps } from '@packages/components'
+
 import DynamicComponent from './utils';
 import { loadStyles } from "@/utils";
 
@@ -12,9 +15,9 @@ const NewsPage = () => {
 		<div>
 			<span className="new">Nes pages</span>
 			<Suspense>
-				<DynamicComponent 
+				<DynamicComponent<NewsProps>
 					title="测试标题" 
-					content="测试内容" 
+					content="测试内容"
 					url="http://localhost:3000/components/news/index.js"
 				/>
 				<DynamicComponent 

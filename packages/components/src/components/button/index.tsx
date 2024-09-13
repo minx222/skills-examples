@@ -1,4 +1,5 @@
-import type React from 'react';
+// biome-ignore lint/style/useImportType: react注入
+import React from 'react';
 import { useState } from 'react';
 import cls from 'classnames';
 import type { ComponentProps } from '@/types'
