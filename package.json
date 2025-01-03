@@ -7,7 +7,6 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "cd packages/hooks && pnpm dev",
 		"lint": "biome lint",
-		"postinstall": "lefthook install",
 		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
 		"commit": "git status && git add -A && git-cz && git push"
 	},

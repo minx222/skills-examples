@@ -17,6 +17,14 @@ const routes: Array<AppRouteRaw> = [
 			title: "effectScope",
 		},
 	},
+	{
+		path: "/effect-scope-stop",
+		name: "effectScopeStop",
+		component: () => import("@/pages/effectScopeStop/index.vue"),
+		meta: {
+			title: "effectScope",
+		},
+	},
 ];
 
 export { routes };

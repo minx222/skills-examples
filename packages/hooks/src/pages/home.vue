@@ -7,5 +7,8 @@
 		<div class="flex flex-wrap flex-col gap-4 items-center justify-center w-full">
 			<RouterLink class="border border-solid border-yellow-200 p-2 rounded-sm" to="/effect-scope">effect-scope</RouterLink>
 		</div>
+		<div class="flex flex-wrap flex-col gap-4 items-center justify-center w-full">
+			<RouterLink class="border border-solid border-yellow-200 p-2 rounded-sm" to="/effect-scope-stop">effect-scope-stop</RouterLink>
+		</div>
 	</div>
 </template>
